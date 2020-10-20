@@ -1,15 +1,21 @@
-## Analisi dati inerenti a COVID19 in Campania da CSV prelevato da catalogo Open Data della regione Campania
+# analisi-dati-covid19-campania
+Analisi su open data forniti dal catalogo degli open data della regione Campania.
 
-[dataset - COVID-19 Monitoraggio situazione: Dati di dettaglio relativi alla Regione Campania](https://dati.regione.campania.it/catalogo/datasetdetail/covid-19-monitoraggio-situazione-dati-di-dettaglio-relativi-alla-regione-campania)
+[Link dataset - COVID-19 Monitoraggio situazione: Dati di dettaglio relativi alla Regione Campania](https://dati.regione.campania.it/catalogo/datasetdetail/covid-19-monitoraggio-situazione-dati-di-dettaglio-relativi-alla-regione-campania)
 
 
 ```python
 # Caricamento dati da notebook di elaborazione
 %run 1_elab_data_covid19_campania.ipynb
 ultimi30giorni = dati_selezionati.tail(30)
+attuale = dati_selezionati.tail(1)
 ```
 
-### Andamento positivi (ultimi 30 giorni)
+#### Dati aggionati al: 18/10/2020
+
+## Dati ultimi 30 giorni
+
+### [1] Andamento positivi (totale)
 
 
 ```python
@@ -19,15 +25,57 @@ ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Totale positivi"], 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee2242b190>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b0f95c70>
 
 
 
 
-![png](output_3_1.png)
+![png](output_5_1.png)
 
 
-### Andamento nuovi casi giornalieri
+**Dato attuale**:
+
+
+```python
+attuale.loc[:,['Totale positivi']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Totale positivi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>237</th>
+      <td>16865</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+### [2] Andamento nuovi casi giornalieri
 
 
 ```python
@@ -37,43 +85,7 @@ ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Nuovi positivi"], g
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee1b72c250>
-
-
-
-
-![png](output_5_1.png)
-
-
-### Andamento % Positivi/Tamponi
-
-
-```python
-ultimi30giorni.plot(kind='line', x='Data aggiornamento', y="% Positivi/Tamponi", grid=True, title='Andamento % Positivi/Tamponi (ultimi 30 giorni)', figsize=(8,5))
-```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee21d9ecd0>
-
-
-
-
-![png](output_7_1.png)
-
-
-### Andamento pazienti ospedalizzati e in terapia intensiva (ultimi 30 giorni)
-
-
-```python
-ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Totale ospedalizzati", "Terapia Intensiva"], grid=True, title='Posti occupati in ospedale e terapia intensiva(ultimi 30 giorni)', figsize=(8,5))
-```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee2008e760>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b029d610>
 
 
 
@@ -81,18 +93,17 @@ ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Totale ospedalizzat
 ![png](output_9_1.png)
 
 
-### Andamento tasso mortalità (ultimi 30 giorni)
-
+### [3] Andamento rapporto(%) Positivi/Tamponi
 
 
 ```python
-ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["% Mortalita"], grid=True, title='Andamento % mortalità (ultimi 30 giorni)', figsize=(8,5))
+ultimi30giorni.plot(kind='line', x='Data aggiornamento', y="% Positivi/Tamponi", grid=True, title='Andamento rapporto(%) Positivi/Tamponi (ultimi 30 giorni)', figsize=(8,5))
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee1b750b50>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b0292e50>
 
 
 
@@ -100,7 +111,49 @@ ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["% Mortalita"], grid
 ![png](output_11_1.png)
 
 
-### Andamento tamponi giornalieri
+**Dato attuale**:
+
+
+```python
+attuale.loc[:,['% Positivi/Tamponi']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>% Positivi/Tamponi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>237</th>
+      <td>9.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+### [4] Andamento tamponi giornalieri
 
 
 ```python
@@ -110,15 +163,132 @@ ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Tamponi giornalieri
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7fee1b5d0100>
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b0208640>
 
 
 
 
-![png](output_13_1.png)
+![png](output_15_1.png)
 
+
+### [5] Andamento ospedalizzati e terapia intensiva
 
 
 ```python
-
+ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["Totale ospedalizzati", "Terapia Intensiva"], grid=True, title='Andamento ospedalizzati e terapia intensiva (ultimi 30 giorni)', figsize=(8,5))
 ```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b01695b0>
+
+
+
+
+![png](output_17_1.png)
+
+
+**Dato attuale**:
+
+
+```python
+attuale.loc[:,['Totale ospedalizzati','Terapia Intensiva']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Totale ospedalizzati</th>
+      <th>Terapia Intensiva</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>237</th>
+      <td>927</td>
+      <td>78</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+### [6] Andamento tasso(%) mortalità
+
+
+```python
+ultimi30giorni.plot(kind='line', x='Data aggiornamento', y=["% Mortalita"], grid=True, title='Andamento % mortalità (ultimi 30 giorni)', figsize=(8,5))
+```
+
+
+
+
+    <matplotlib.axes._subplots.AxesSubplot at 0x7ff1b0145580>
+
+
+
+
+![png](output_21_1.png)
+
+
+**Dato attuale**:
+
+
+```python
+attuale.loc[:, ['% Mortalita']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>% Mortalita</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>237</th>
+      <td>1.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
