@@ -10,7 +10,7 @@ Dati prelevati dal catalogo degli open data della regione Campania.
 
 - [Dashboard](notebooks/01-dashboard.ipynb)
   > Contiene i dati giornalieri e overall,
-- [Analisi ultimi 7 giorni](notebooks/02-dashboard.ipynb)
+- [Analisi ultimi 7 giorni](notebooks/02-analisi-7-giorni.ipynb)
   > Analisi sull'andamento degli ultimi 7 giorni.
 - [Analisi ultimi 15 giorni](notebooks/03-analisi-15-giorni.ipynb)
   > Analisi sull'andamento degli ultimi 15 giorni.
