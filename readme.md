@@ -6,7 +6,7 @@ Dati prelevati dal catalogo degli open data della regione Campania.
 [Link dataset - COVID-19 Monitoraggio situazione: Dati di dettaglio relativi alla Regione Campania](https://dati.regione.campania.it/catalogo/datasetdetail/covid-19-monitoraggio-situazione-dati-di-dettaglio-relativi-alla-regione-campania)
 
 
-**Dataset aggiornato al**: 24/10/2020
+**Dataset aggiornato al**: 30/10/2020
 
 
 **Notebook disponibili**:
