@@ -1,4 +1,4 @@
-# analisi-dati-covid19-campania
+# analisi-covid19-campania
 > Analisi su dati inerenti all'emergenza covid 19 in Campania. 
 
 Dati prelevati dal catalogo degli open data della regione Campania.
